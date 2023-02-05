@@ -1,0 +1,135 @@
+{% extends "layout.html" %}
+{% block content %}
+<article class="content" style="display: flex;">
+            
+  <img class='rounded-circle article-img' src= "{{url_for('static',filename='profile_pics/'+ post.author.image_file)}}" >
+
+  <div class="mediaContent" style="flex:3">
+    <div class="article-metadata" >
+    <h4 style="align-items: center;"><a  href="{{url_for('user_posts',username=post.author.username)}}" >{{ post.author.username }}</a></h4>
+  
+      <small style="align-items: center;" id="s" class="text-muted text-dark">{{ post.date_posted.strftime('%d-%m-%Y      %H:%M' ) }}</small> 
+      <div style="display: flex;gap:5px">
+        <h4> {{post.likes|length}} Likes </h4>
+        {% if current_user.id in post.likes| map(attribute="author")|list %}
+       <a href="/like-post/{{post.id}}" ><i class="fa fa-heart" style="font-size:34px;color:red"></i></a>
+       {% else %}
+       <a href="/like-post/{{post.id}}" ><i class="fa fa-heart-o" style="font-size:34px;color:red"></i></a>
+       {% endif %}
+      </div>
+      
+    </div>
+    <br>
+      
+      <h4 style="text-align: center;" class="article-title">{{ post.title }}</h4>
+      <p class="article-content">{{ post.content }}</p>
+      {% if post.meme_file %}
+        <img src="{{url_for('static',filename='meme_pics/'+ post.meme_file)}}" class="img-fluid" style="border-radius: 10px;" >
+      {% endif %}
+   
+
+
+
+    <div class="card-body" >
+    
+    {% if post.comments| length > 0 %}
+    
+  
+    <button style="display: flexbox; background-color: #FAD961;
+    background-image: linear-gradient(90deg, #FAD961 0%, #F76B1C 100%);
+    "  id="getDet" onclick="toggle_comments()" > View {{post.comments|length}} Comments</button><br/>
+   
+    {% else %}
+        <button style="background-color: #74EBD5;
+        background-image: linear-gradient(90deg, #74EBD5 0%, #9FACE6 100%);
+        border:none;border-radius: 10px;color:white;height:35px"> No Comments</button><br/>
+    {% endif %}
+
+  
+  
+    <div class="compp" id="comments-{{post.id}}" name="myel" style="display: none;">
+      <div class="card">
+        <div class="card-body mv"  id="comments-expanded-{{post.id}}">
+          {% for comment in post.comments %}
+          <div class="d-flex  align-items-center" >
+            <div style="flex:1.6">
+              <a href="{{url_for('user_posts',username=comment.user.username)}}">
+                {{comment.user.username}}
+              </a>
+              : {{comment.text}}
+            </div>
+            <div style="flex:1;display: flex;gap:17px;" class="av">
+              <small class="text-dark" style="margin-left:20px;">{{comment.date_posted.strftime('%d-%m-%Y            %H:%M:%S')}} </small>
+              {% if current_user.id == comment.author or current_user.id ==post.author%}
+          
+                 <a href="/delete-comment/{{comment.id}}" ><i class="fa fa-trash-o" style="font-size:23px;color:red"></i></a>
+
+           
+              {% endif %}
+
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    
+   <!-- <p class="card-text"> -->
+  
+    
+   <!-- </p> -->
+   <br>
+    <div>
+      <form class="input-group mb-3" method="POST" action="/create-comment/{{post.id}}">
+        <input type="text" id="text" name="text" class="form-control" placeholder="Comment here"/>
+        <button type="submit" class="btn btn-info">Comment</button>
+      </form>
+    </div>
+    {% if post.author == current_user or current_user.username=='admin' %}
+      
+    <div>
+      <a class="btn btn-info text-white btn-sm mt-1 mb-1" href="{{ url_for('update_post', post_id=post.id) }}">Update</a>
+      <button type="button" class="btn btn-danger btn-sm mt-1 mb-1" data-toggle="modal" data-target="#deleteModal">Delete</button>
+      
+    </div>
+  {% endif %}
+
+  </div>
+ 
+
+
+</div>
+<!-- <div>
+  <h4> {{post.likes|length}} Likes </h4>
+  {% if current_user.id in post.likes| map(attribute="author")|list %}
+ <a href="/like-post/{{post.id}}" ><i class="fa fa-heart" style="font-size:34px;color:red"></i></a>
+ {% else %}
+ <a href="/like-post/{{post.id}}" ><i class="fa fa-heart-o" style="font-size:34px;color:red"></i></a>
+ {% endif %}
+
+</div> -->
+  
+      </article>
+
+    
+    
+      <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="deleteModalLabel">Are you sure want to Delete Your Blog Post?</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <form action="{{ url_for('delete_post', post_id=post.id) }}" method="POST">
+                <input class="btn btn-danger" type="submit" value="Delete">
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+    {% endblock content %}

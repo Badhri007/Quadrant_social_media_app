@@ -1,0 +1,45 @@
+
+{% extends "layout.html" %}
+{% block content %}  
+
+ {% for post in posts %}
+    {% if post.author.username in followers_list %}
+    <article class="content">
+            
+      <img class='rounded-circle article-img' src= "{{url_for('static',filename='profile_pics/'+ post.author.image_file)}}">
+  
+      <div class="mediaContent">
+        <div class="article-metadata">
+        <h4><a  href="{{url_for('user_posts',username=post.author.username)}}">{{ post.author.username }}</a></h4>
+      
+          <small id="s" class="text-muted text-dark">{{ post.date_posted.strftime('%d-%m-%Y      %H:%M' ) }}</small> 
+        </div>
+       
+  
+        <h5 style="text-align: center;"><a class="article-title text-primary" href="{{ url_for('post', post_id=post.id) }}">{{ post.title }}</a></h5>
+        <h6><p class="article-content">{{ post.content }}</p></h6>
+        
+        {% if post.meme_file %}
+          <a class="article-title text-primary" href="{{ url_for('post', post_id=post.id) }}">
+
+              <img src="{{url_for('static',filename='meme_pics/'+ post.meme_file)}}" class="img-fluid" >
+          </a>
+        {% endif %}
+        <a id="viewButton" href="{{ url_for('post', post_id=post.id) }}">
+           View
+        </a>
+        
+      </div>
+  
+    </article>
+          {% endif %}
+   {% endfor %}
+   
+  
+
+  
+
+{% endblock content%}
+   
+
+    

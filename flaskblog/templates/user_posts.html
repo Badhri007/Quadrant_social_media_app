@@ -1,0 +1,153 @@
+
+{% extends "layout.html" %}
+{% block content %}  
+<div class="alert alert-success row my-0" role="alert" style="padding:10px 19px">
+  <div class="col">  <h2>
+ 
+    <img class='rounded-circle article-img' src= "{{url_for('static',filename='profile_pics/'+ user.image_file)}}">
+    {{user.username}}
+  </h2>
+</div>
+<span>
+  {% if current_user.username == user.username%}
+     <h5>Can't follow yourself</h5>
+
+{% elif current_user.username not in followers %}
+<button id="follow" onclick="check()" type="button" class="btn btn-success">
+  Follow
+</button>
+{% else %}
+<button id="follow" onclick="check()" type="button" class="btn btn-danger">
+  Following
+</button>
+
+{% endif %}
+<script>
+  function check()
+  {
+    var s= document.getElementById('follow');
+    console.log(s.innerText=='Follow');
+
+    (s.innerText=='Follow')?follow():unfollow();
+  }
+  function follow()
+  {
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "/follow/{{user.username}}/{{ current_user.username }}", true);
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState === 4 && xhr.status === 200) {
+        // Handle the response
+        var data = JSON.parse(xhr.responseText);
+        if(data.status)
+        {
+          document.getElementById('follow').className='btn btn-danger col';
+          document.getElementById('follow').innerText="Following";          
+        }
+      }
+    };
+    xhr.send();
+    
+  }
+  function unfollow()
+  {
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "/unfollow/{{user.username}}/{{ current_user.username }}", true);
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState === 4 && xhr.status === 200) {
+        // Handle the response
+        var data = JSON.parse(xhr.responseText);
+        if(data.status)
+        {
+          document.getElementById('follow').className='btn btn-success col';
+          document.getElementById('follow').innerText="Follow";          
+        }
+      }
+    };
+    xhr.send();
+    
+  }
+</script>
+</span>
+</div>
+<div class="row" style="gap:1px;">
+  <div class="col">
+    
+    <div class="alert alert-warning row" role="alert" style="margin-top:10px;padding:10px 19px">
+      <h5> {{ posts.total}} Posts </h5>
+  </div>
+  </div>
+  <div class="col">
+    <div class="alert alert-danger row" role="alert" style="margin-top:10px;padding:10px 19px">
+    <h5>  {{followers|count}} Followers</h5>
+    </div>
+
+  </div>
+</div>
+ {% for post in posts.items  %}
+          <article class="content">
+            <img class='rounded-circle article-img' src= "{{url_for('static',filename='profile_pics/'+ post.author.image_file)}}">
+            <div class="mediaContent">
+              <div class="article-metadata">
+              <h4><a class="mr-2 text-danger" href="{{url_for('user_posts',username=post.author.username)}}">{{ post.author.username }}</a></h4>
+                <small class="text-muted text-dark">{{ post.date_posted.strftime('%d-%m-%Y      %H:%M' ) }}</small>
+            {% if post.author == current_user or current_user.username=='admin' %}
+      
+                <div>
+                  <a class="btn btn-info text-white btn-sm mt-1 mb-1" href="{{ url_for('update_post', post_id=post.id) }}">Update</a>
+                  <button type="button" class="btn btn-danger btn-sm m-1" data-toggle="modal" data-target="#deleteModal">Delete</button>
+                
+                </div>
+          {% endif %}
+          <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="deleteModalLabel">Are you sure want to Delete Your Blog Post?</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <form action="{{ url_for('delete_post', post_id=post.id) }}" method="POST">
+                    <input class="btn btn-danger" type="submit" value="Delete">
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+
+            </div>
+              <h5 style="text-align: center;"><a class="article-title text-primary" href="{{ url_for('post', post_id=post.id) }}">{{ post.title }}</a></h5>
+              <h6><p class="article-content">{{ post.content }}</p></h6>
+              {% if post.meme_file %}
+              <a class="article-title text-primary" href="{{ url_for('post', post_id=post.id) }}">
+    
+                  <img src="{{url_for('static',filename='meme_pics/'+ post.meme_file)}}" class="img-fluid" >
+              </a>
+            {% endif %}
+            <a id="viewButton" href="{{ url_for('post', post_id=post.id) }}">
+               View
+            </a>
+          </article>
+   {% endfor %}
+  
+   {% for page_num in posts.iter_pages(left_edge=1,right_edge=1,left_current=1,right_current=2)  %}
+      {% if page_num %}
+          {% if posts.page == page_num  %}
+            <a class="btn mr-10 btn-dark  " href="{{url_for('user_posts',username=user.username,page=page_num)}}">{{page_num}}</a>
+          {% else %}
+          <a class="btn  mr-10 btn-outline-dark " href="{{url_for('user_posts',username=user.username,page=page_num)}}">{{page_num}}</a>
+          {% endif %}
+      {% else%}
+          ...
+      {% endif %}
+   {% endfor %}
+
+   
+
+
+{% endblock content%}
+   
+
+    
