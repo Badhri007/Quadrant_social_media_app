@@ -50,12 +50,9 @@ ___
 
 
 
-- ### [/instance/site.db](/instance/site.db) - SqlLite DataBase Tables & Data
-- ### [/README.md](README.md)
-- ### [/requirements.txt](requirements.txt) - Packages required
-- ### [/run.py](run.py) - Configuration of Application.
-- ### [/CHECKLIST.md](CHECKLIST.md) - Checklist for Project Submission.
-- ### [/Blog Site App Report.pdf](Blog%20Site%20App%20Report.pdf) - Project Report.
+- ## [/instance/site.db](/instance/site.db) - SqlLite DataBase Tables & Data
+- ## [/README.md](README.md)
+- ## [/requirements.txt](requirements.txt) - Packages required
+- ## [/run.py](run.py) - Configuration of Application.
+- ## [/CHECKLIST.md](CHECKLIST.md) - Checklist for Project Submission.
 
-
-- ### [Video](https://drive.google.com/file/d/1boEqvONLUdexiOXHXMVIuSuTdxHLl67h/view?usp=share_link)-Presentation Demo of the Application
