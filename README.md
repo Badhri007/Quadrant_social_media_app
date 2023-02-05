@@ -1,6 +1,6 @@
-# Blog Site App
+# Social Media Blog Site App - Quadrant 
 
-App developed by [Badhri Narayanan S](mailto:21f2000483@student.onlinedegree.iitm.ac.in) (21f2000483)
+App developed by [Badhri Narayanan S]
 
 Made  using HTML, Flask, Bootstrap, Basic Javascript
 ____
