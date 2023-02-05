@@ -187,6 +187,10 @@ a.article-title:hover {
 .c{
   flex-direction: column;
 }
+#pop
+{
+  justify-content: space-around;
+}
 
 
 
@@ -202,4 +206,10 @@ a.article-title:hover {
   background-color: #FAD961;
   background-image: linear-gradient(90deg, #FAD961 0%, #F76B1C 100%);
   border-radius: 10px;
+}
+
+.c{
+  background-color: white;
+  border-radius:10px;
+  padding: 15px;
 }
