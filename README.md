@@ -6,28 +6,28 @@ Made  using HTML, Flask, Bootstrap, Basic Javascript
 ____
 
 
-Application Pics
+## Application Pics
 
 ## Home Page (All Users Posts gets displayed)
 ![image](https://user-images.githubusercontent.com/124488669/220830686-a2743f3f-9102-4cdb-813d-76329ebd7b74.png)
 
-##Add a Post
+## Add a Post
 ![image](https://user-images.githubusercontent.com/124488669/220830839-12010427-ee2c-498b-b11f-cbe3b1bdb7b9.png)
 
-##Post Details(User Engagement)
+## Post Details(User Engagement)
 ![image](https://user-images.githubusercontent.com/124488669/220830946-5bb0fc41-1170-4af7-a562-71c16b7c8b3e.png)
 
-##User Dashboard & Post Updation & Deletion for Owner of Post
+## User Dashboard & Post Updation & Deletion for Owner of Post
 ![image](https://user-images.githubusercontent.com/124488669/220831178-b6dd140c-6011-4a5b-9015-84f525fd1747.png)
 
-##Follow & unfollow Other Users
+## Follow & unfollow Other Users
 ![image](https://user-images.githubusercontent.com/124488669/220831285-d3eeb04f-4869-4b4e-a6ff-b8f710e7a2b2.png)
 
-##Dashboard has Followers and Following user
+## Dashboard has Followers and Following user
 ![image](https://user-images.githubusercontent.com/124488669/220831438-5650b8f4-e391-4a89-9e4c-5140331760ce.png)
 ![image](https://user-images.githubusercontent.com/124488669/220831744-e20ccd12-dbe0-4d2e-a572-1ce11c0bd721.png)
 
-##Followers Post displayed in Feeds page
+## Followers Post displayed in Feeds page
 ![image](https://user-images.githubusercontent.com/124488669/220831894-baddc128-f29d-4f5d-8653-d5e0f0dce04f.png)
 
 _______
