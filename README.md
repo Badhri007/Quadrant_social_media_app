@@ -11,38 +11,42 @@ ____
 ## Home Page (All Users Posts gets displayed)
 ![image](https://user-images.githubusercontent.com/124488669/220835068-3f535f02-b35f-4074-b414-2e0046382e36.png)
 
+___
 
 ## Add a Post
 ![image](https://user-images.githubusercontent.com/124488669/220835128-92a21fea-e883-43e9-b461-212dc8afc7b2.png)
 
-
+___
 
 ## Post Details(User Engagement with liking and commenting on posts)
 ![image](https://user-images.githubusercontent.com/124488669/220835319-2faf309c-aec2-4829-9cf2-75e5683a25cd.png)
 
-
+___
 
 ## User Dashboard & Post Updation & Deletion for Owner of Post
 ![image](https://user-images.githubusercontent.com/124488669/220835393-d19c27e1-c2bb-4c3e-b633-7a894494ab1f.png)
 
-
+___
 
 ## Follow & unfollow Other Users
 ![image](https://user-images.githubusercontent.com/124488669/220835509-ad7b6f37-15a6-45ef-bba4-83ec14ccb30e.png)
 
-
+____
 
 ## Dashboard has Followers and Following user
 ![image](https://user-images.githubusercontent.com/124488669/220835616-5d63943f-748a-4b92-b6bd-3139b01fa443.png)
 ![image](https://user-images.githubusercontent.com/124488669/220835724-6340f13c-9a0e-42a6-a19a-16b1fcf3f385.png)
 
+____
 
 ## Followers Post displayed in Feeds page
 ![image](https://user-images.githubusercontent.com/124488669/220835806-065672bc-a9a1-4e8e-b708-45912581b4a4.png)
 
+____
 
 ## Search for Users
-![image](https://user-images.githubusercontent.com/124488669/220834537-f974f354-b65f-4ce7-bba7-77c49c43b018.png)
+![image](https://user-images.githubusercontent.com/124488669/220836080-a34b3ef4-61e1-4e8b-acb7-dc5b9382a1fc.png)
+
 
 
 _______
