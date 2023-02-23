@@ -35,7 +35,7 @@ ____
 ![image](https://user-images.githubusercontent.com/124488669/220832717-d98c57a4-0465-4b5d-8652-711c148e6050.png)
 
 ## Search for Users
-![image](https://user-images.githubusercontent.com/124488669/220834389-b927dfab-2f8a-4459-8b1d-6c0a49391565.png)
+![image](https://user-images.githubusercontent.com/124488669/220834537-f974f354-b65f-4ce7-bba7-77c49c43b018.png)
 
 
 _______
