@@ -37,6 +37,10 @@ ____
 ## Search for Users
 ![image](https://user-images.githubusercontent.com/124488669/220834537-f974f354-b65f-4ce7-bba7-77c49c43b018.png)
 
+## Dashboard
+![image](https://user-images.githubusercontent.com/124488669/220834792-79e02a08-cb9e-4bed-aa98-6442fd0afbe7.png)
+
+
 
 _______
 
